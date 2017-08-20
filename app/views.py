@@ -1,14 +1,16 @@
+from flask import render_template, redirect, flash
 from app import app
 from app import users
 from flask_mail import Message
+from .forms import UserPreferences
 import app.Paper as Paper
 import app.mailer as mailer
 
-@app.route('/')
-@app.route('/index')
+@app.route('/', methods=['GET', 'POST'])
 def index():
-    result = "Hello World!\n"
-    return result
+    form = UserPreferences()
+    return render_template('index.html',
+            form=form)
 
 @app.route('/checkMail')
 def checkMail():
@@ -22,3 +24,5 @@ def checkMail():
             result += "Error processing email for " + ind.name + "\n"
             result += str(e)
     return result
+
+

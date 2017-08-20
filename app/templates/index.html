@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Registro de preferências
+{% endblock %}
+
+{% block content %}
+    <h1>Inscrever-se para o feed</h1>
+    <div class="row">
+        <form action="" method="POST" class="col s12">
+            {{ form.hidden_tag() }}
+            <div class="row">
+                <div class="input-field col s6">
+                    {{ form.email(id='email', class='validate') }}
+                    <label for="email">Email</label>
+                </div>
+            </div>
+            <div class="row">
+                {% for area_of_interest in form.areas_of_interest %}
+                    {{ area_of_interest(class='waves-effect waves-light btn') }}
+                    {{ area_of_interest.label }}
+                {% endfor %}
+            </div>
+            <div class="row">
+                <button type="submit" class="btn waves-effect btn-submit">Enviar</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
