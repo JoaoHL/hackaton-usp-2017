@@ -9,6 +9,9 @@ import app.mailer as mailer
 @app.route('/', methods=['GET', 'POST'])
 def index():
     form = UserPreferences()
+    if form.validate_on_submit():
+        print("Vou cadastrar o usuario {} com email {} e preferencias {}".format(form.name.data, form.email.data, form.areas_of_interest.data))
+        return redirect('/show_papers')
     return render_template('index.html',
             form=form)
 
@@ -26,3 +29,6 @@ def checkMail():
     return result
 
 
+@app.route('/show_papers', methods=['GET'])
+def show_papers():
+    return render_template('papers.html')

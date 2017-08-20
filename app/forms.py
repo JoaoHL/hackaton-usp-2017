@@ -13,6 +13,7 @@ class UserPreferences(FlaskForm):
             ('GR', 'Graph Theory'),
             ('CV', 'Computer Vision'),
             ('BE', 'Bioethanol')]
+    name = StringField('Nome', validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired()])
     areas_of_interest = MultiCheckboxField('Áreas de interesse', validators=[DataRequired()], choices=research_areas)
 
