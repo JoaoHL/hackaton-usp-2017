@@ -1,10 +1,22 @@
 import arxivApiClient as aac
 
+
 #Utility functions
 def dateFormating(publdate):
     publdate = publdate.split("T")[0]
     publdate = publdate.replace("-", "/")
     return publdate
+
+#dates are strings "YYYY/MM/DD"
+def compareDate(date1, date2):
+    date1 = list(map(int, date1.split('/')))
+    date2 = list(map(int, date2.split('/')))
+    for i in range(len(date1)):
+        if date1[i] > date2[i]:
+            return True
+        elif date1[i] < date2[i]:
+            return False
+    return False
 
 #inteligent clipping, dont clip words
 def clipText(title, treshold):
@@ -47,8 +59,9 @@ def getUserPapers(user):
     rawinfo = aac.retrievePaperInfo(user.interests)
     for meat in rawinfo:
         meat = meat['entry']
-        paper = Paper(clipText(meat['title'], 30), meat['author'], clipText(meat['summary'], 140), meat['id'], dateFormating(meat['published']))
-        RealPapers.append(paper)
+        if compareDate(dateFormating(meat['published']), user.date):
+            paper = Paper(clipText(meat['title'], 40), meat['author'], clipText(meat['summary'], 140), meat['id'], dateFormating(meat['published']))
+            RealPapers.append(paper)
     return RealPapers
          
 

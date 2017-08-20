@@ -19,7 +19,7 @@ def retrievePaperInfo(terms): ## terms has to be a list
 		doc = tree.documentElement
 		entries = doc.getElementsByTagName("entry")
 		jsonEntries = []
-		print(x)
+		#print(x)
 		for entry in entries:
 			properties = ["title", "id", "published", "summary"]
 			x = [(y, entry.getElementsByTagName(y)[0].firstChild.nodeValue) for y in properties]
@@ -43,7 +43,7 @@ def retrievePaperInfo(terms): ## terms has to be a list
 					categories.append(term)
 			jsonEntry["entry"]["categories"] = categories
 			outputJson.append(jsonEntry)
-	return encoder().encode(outputJson)
+	return outputJson
 
 
 
