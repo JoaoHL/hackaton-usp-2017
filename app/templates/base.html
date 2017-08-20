@@ -3,20 +3,30 @@
 <html>
      <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <!--Import Google Icon Font-->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!--Import materialize.css-->
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='materialize/css/materialize.min.css') }}"  media="screen,projection"/>
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}"  media="screen,projection"/>
-        <title>{% block title %}Meu titulo TOP {% endblock %} </title>
+         <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+            });
+        </script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logo.png') }}" />
+        <title>SciTter - {% block title %}Meu titulo TOP {% endblock %} </title>
     </head>
     <body>
         <nav>
             <div class="light-green nav-wrapper">
-                <a href="#" class="brand-logo">Nosso projeto TOP</a>
+                <a href="#" class="brand-logo logo-space">SciTter</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="#">Inicio</a></li>
+                    {% if user %}
+                    <li class="nav-mobile-email">{{ user.email }}</li>
+                    {% endif %}
                 </ul>
             </div>
         </nav>

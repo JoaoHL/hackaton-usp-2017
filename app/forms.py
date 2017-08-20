@@ -11,7 +11,7 @@ class UserPreferences(FlaskForm):
             ('ML', 'Machine Learning'),
             ('OPT', 'Optimization'),
             ('GR', 'Graph Theory'),
-            ('CV', 'Computer Vision'),
+            ('SC', 'Smart Cities'),
             ('BE', 'Bioethanol')]
     name = StringField('Nome', validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired()])

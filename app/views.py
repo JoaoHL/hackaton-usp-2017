@@ -5,6 +5,7 @@ from flask_mail import Message
 from .forms import UserPreferences
 import app.Paper as Paper
 import app.mailer as mailer
+import app.User as User
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -36,6 +37,7 @@ def debugMail():
     
 @app.route('/show_papers', methods=['GET'])
 def show_papers():
+    userForView = User.User("Joseph Rabbit", "rabbit@math.org", ["Graph Theory", "Optimization"], "2017/01/07")
     papers = Paper.getPapersForView()
     papers = papers[:10]
-    return render_template('papers.html', papers=papers)
+    return render_template('papers.html', user=userForView, papers=papers)

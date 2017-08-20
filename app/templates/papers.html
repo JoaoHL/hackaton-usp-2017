@@ -5,7 +5,10 @@
 {% endblock %}
 
 {% block content %}
-    <h2>Artigos recentes para as areas de interesse</h2>
+    <section class="user">
+        Seja bem-vindo, {{ user.name }}
+    </section>
+    <h2>Artigos recentes</h2>
     {% for paper in papers %}
          <div class="row">
             <div class="col s12 m12">

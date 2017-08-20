@@ -10,7 +10,6 @@ def getPaperList(terms, n):
     query = terms
     url = "http://export.arxiv.org/api/query?search_query=abs:\"{}\"&sortBy=lastUpdatedDate&sortOrder=descending&max_results={}".format(quote(query), n)
     data = urllib.request.urlopen(url).read()
-    print(data)
     return data
 
 def retrievePaperInfo(terms): ## terms has to be a list
