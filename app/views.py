@@ -26,5 +26,4 @@ def checkMail():
             except Exception as e:
                 result += "Error processing email for " + ind.name + "\n"
                 result += str(e)
-                raise
     return result

@@ -7,7 +7,7 @@ import app.configs as configs
 app = Flask(__name__)
 
 ##Mail configuration
-app.configs = configs.config
+app.config.update(configs.config)
 mail = Mail(app)
 users = User.MockUsers()
 from app import views
