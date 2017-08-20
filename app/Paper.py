@@ -7,12 +7,12 @@ def dateFormating(publdate):
     return publdate
 
 #inteligent clipping, dont clip words
-def clipTitle(title):
+def clipText(title, treshold):
     divtitle = title.split(" ")
     numchars = 0
     restitle = ""
     for i in range(len(divtitle)):
-        if numchars < 40:
+        if numchars < treshold:
             restitle += divtitle[i] + " " 
             numchars += len(divtitle[i]) + 1 
         else:
@@ -47,7 +47,7 @@ def getUserPapers(user):
     rawinfo = aac.retrievePaperInfo(user.interests)
     for meat in rawinfo:
         meat = meat['entry']
-        paper = Paper(clipTitle(meat['title']), meat['summary'], meat['id'], meat['author'], dateFormating(meat['published']))
+        paper = Paper(clipText(meat['title'], 30), meat['author'], clipText(meat['summary'], 140), meat['id'], dateFormating(meat['published']))
         RealPapers.append(paper)
     return RealPapers
          

@@ -9,14 +9,6 @@ def sendMail(user, papers, debug=False):
     print("Sending mail")
     msg = Message("New papers!")
     msg.recipients = [user.email]
-    """
-    body = ""
-    for paper in papers:
-        body += "Paper: " + paper.title + "\n"
-        body += "abstract: " + paper.abstract + "\n"
-        body += "link: " + paper.link + "\n"
-    msg.body = body
-    """
     msg.html = render_template("template-mail.html", papers=papers, user=user)
 
     if debug:
