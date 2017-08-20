@@ -8,7 +8,7 @@ class User:
 ##Mock users
 def MockUsers():
     mockusers = []
-    interest = set(['graph theory'])
+    interest = set(['graph'])
     mockusers.append(User("Antonio", "antonio.augusto.abello@gmail.com", interest))
     return mockusers
     

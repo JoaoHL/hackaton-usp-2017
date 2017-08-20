@@ -5,6 +5,7 @@ from app import mail
 from flask_mail import Message
 
 def sendMail(user, papers):
+    print("Sending mail")
     msg = Message("New papers!")
     msg.recipients = [user.email]
     body = ""
@@ -13,6 +14,7 @@ def sendMail(user, papers):
         body += "abstract: " + paper.abstract + "\n"
         body += "link: " + paper.link + "\n"
     msg.body = body
+    print("Body: " + body)
     mail.send(msg)
         
         

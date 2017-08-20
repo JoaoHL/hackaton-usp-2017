@@ -1,10 +1,9 @@
-import urllib
+import urllib.request
 import sys
 import xml.dom.minidom
 from xml.dom.minidom import parse
 import json
 from json import JSONEncoder as encoder
-
 
 def getPaperList(terms, n):
 	query = ""
@@ -12,14 +11,12 @@ def getPaperList(terms, n):
 		query += "+OR+abs:\"" + term + "\""
 	query = query[9:]
 	url = "http://export.arxiv.org/api/query?search_query=abs:\"" + query + "&sortBy=lastUpdatedDate&sortOrder=ascending&max_results=" + str(n)
-	data = urllib.urlopen(url).read()
+	data = urllib.request.urlopen(url).read()
 	return data
 
-if (len(sys.argv) > 1):
-	terms = []
-	for i in range(len(sys.argv)):
-		if (i > 0):
-			terms.append(sys.argv[i])
+
+##TO-DO: retrieve link
+def retrievePaperInfo(terms):
 	x = getPaperList(terms, 3)
 	tree = xml.dom.minidom.parseString(x)
 	doc = tree.documentElement
@@ -50,9 +47,7 @@ if (len(sys.argv) > 1):
 				categories.append(term)
 		jsonEntry["entry"]["categories"] = categories
 		outputJson.append(jsonEntry)
-
-	outputJson = encoder().encode(outputJson)
-	print(outputJson)
+	return outputJson
 
 
 

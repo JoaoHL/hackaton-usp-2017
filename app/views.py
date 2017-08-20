@@ -13,17 +13,12 @@ def index():
 @app.route('/checkMail')
 def checkMail():
     result = "Checking mails\n"
-    papers = Paper.getMockPapers()
     for ind in users:
-        match = []
-        for paper in papers:
-            if not paper.tags.isdisjoint(ind.interests):
-                match.append(paper)
-        if match != []:
-            try:
-                mailer.sendMail(ind, match)
-                result += "Sent email to " + ind.name + "\n"
-            except Exception as e:
-                result += "Error processing email for " + ind.name + "\n"
-                result += str(e)
+        papers = Paper.getUserPapers(ind)
+        try:
+            mailer.sendMail(ind, papers)
+            result += "Sent email to " + ind.name + "\n"
+        except Exception as e:
+            result += "Error processing email for " + ind.name + "\n"
+            result += str(e)
     return result
