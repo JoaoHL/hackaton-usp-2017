@@ -7,14 +7,48 @@
         <!--Import Google Icon Font-->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!--Import materialize.css-->
-        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='materialize/css/materialize.min.css') }}"  media="screen,projection"/>   
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='materialize/css/materialize.min.css') }}"  media="screen,projection"/>
+        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}"  media="screen,projection"/>
         <title>{% block title %}Meu titulo TOP {% endblock %} </title>
     </head>
     <body>
+        <nav>
+            <div class="light-green nav-wrapper">
+                <a href="#" class="brand-logo">Nosso projeto TOP</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="#">Inicio</a></li>
+                </ul>
+            </div>
+        </nav>
         <div class="container">
             {% block content %}
             {% endblock %}
         </div>
+        <footer class="page-footer light-green lighten-1">
+            <div class="container">
+                <div class="row">
+                    <div class="col s6">
+                        <h4>Desenvolvido por:</h4>
+                        <section class="footer-desenvolvedores">    
+                            <ul>
+                                <li>Antonio Abello</li>
+                                <li>Cesar Cano</li>
+                                <li>João Henrique Luciano</li>
+                                <li>Lucas Romão</li>
+                            </ul>
+                        </section>
+                    </div>
+                    <div class="col s6">
+                        <section class="footer-repositorio">
+                            <h5>Código fonte disponível em:</h5>
+                            <a href="https://github.com/JoaoHL/hackaton-usp-2017" class="repo">
+                                https://github.com/JoaoHL/hackaton-usp-2017
+                            </a>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </body>
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>

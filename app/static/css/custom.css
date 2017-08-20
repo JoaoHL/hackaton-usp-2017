@@ -1,0 +1,16 @@
+.vertical-space {
+    margin-top: 20px;
+}
+
+.repo::before {
+    content: "";
+    width: 32px;
+    background-image: url("/static/icons/GitHub-Mark-32px.png");
+    display: inline-block;
+    height: 32px;
+    vertical-align: middle;
+}
+
+.repo {
+    color: white;
+}

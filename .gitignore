@@ -1,3 +1,5 @@
-app/configs.py
 __pycache__/*
 app/__pycache__/*
+*.pyc
+*.swp
+
