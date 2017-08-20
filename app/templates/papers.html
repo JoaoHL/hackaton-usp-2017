@@ -1,64 +1,28 @@
 {% extends "base.html" %}
 
 {% block title %}
-    Novos artigos nas areas: bla, blabla, blablabla
+    Novos artigos nas areas: Teoria dos grafos
 {% endblock %}
 
 {% block content %}
     <h2>Artigos recentes para as areas de interesse</h2>
-    
-    <div class="row">
-        <div class="col s12 m12">
-            <div class="card light-green-1">
-                <div class="card-content">
-                    <span class="card-title">Meu card</span>
-                    <span class="card-author">Robbie Williams</span>
-                    <p>
-                        I sit and wait
-                        Does an angel contemplate my fate
-                        And do they know
-                        The places where we go
-                        When we're grey and old
-                        'cause I've been told
-                        That salvation lets their wings unfold
-                        So when I'm lying in my bed
-                        Thoughts running through my head
-                        And I feel that love is dead
-                        I'm loving angels instead
-                    </p>
-                </div>
-                <div class="card-action">
-                    <a href="https://www.youtube.com/watch?v=luwAMFcc2f8">Link para o hino</a>
+    {% for paper in papers %}
+         <div class="row">
+            <div class="col s12 m12">
+                <div class="card light-green-1">
+                    <div class="card-content">
+                        <span class="card-title">{{ paper.title }}</span>
+                        <span class="card-author">{{ paper.author }}</span>
+                        <p>
+                            {{ paper.abstract }}
+                        </p>
+                    </div>
+                    <div class="card-action">
+                        <a href="{{ paper.link }}">Link para o artigo</a>
+                        <span class="right new badge blue" data-badge-caption="Teoria dos Grafos"> </span> 
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
-     <div class="row">
-        <div class="col s12 m12">
-            <div class="card light-green-1">
-                <div class="card-content">
-                    <span class="card-title">Meu segundo card</span>
-                    <span class="card-author">Wada Kouji</span>
-                    <p>
-                        Nigetari akirameru koto wa daremo
-                        Isshun areba dekiru kara arukitsuzukeyou
-
-                        Kimi ni shika dekinai koto ga aru aoi hoshi ni
-                        Hikari ga nakusenu you ni
-
-                        Tsukame! egaita yume wo
-                        Mamore! daiji na tomo wo
-                        Takumashii jibun ni nareru sa
-                        Shiranai pawaa ga yadoru haato ni hi ga tsuitara
-                        Donna negai mo uso ja nai
-                        Kitto kanau kara...show me your brave heart
-                    </p>
-                </div>
-                <div class="card-action">
-                    <a href="https://www.youtube.com/watch?v=b1uH4BnswKQ">Link para o hino</a>
-                </div>
-            </div>
-        </div>
-    </div>   
+    {% endfor %}
 {% endblock %}
