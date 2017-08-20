@@ -64,4 +64,13 @@ def getUserPapers(user):
             RealPapers.append(paper)
     return RealPapers
          
-
+def getPapersForView():
+    papers = []
+    rawinfo = aac.retrievePaperInfo(["Graph Theory"])
+    print("rawinfo ", rawinfo)
+    for meat in rawinfo:
+        print("meat: ", meat)
+        meat = meat['entry']
+        paper = Paper(clipText(meat['title'], 50), meat['author'], clipText(meat['summary'], 250), meat['id'], dateFormating(meat['published']))
+        papers.append(paper)
+    return papers

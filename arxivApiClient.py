@@ -6,10 +6,10 @@ import json
 from json import JSONEncoder as encoder
 
 def getPaperList(terms, n):
-	query = terms
-	url = "http://export.arxiv.org/api/query?search_query=abs:\"" + query + "\"&sortBy=lastUpdatedDate&sortOrder=descending&max_results=" + str(n)
-	data = urllib.request.urlopen(url).read()
-	return data
+    query = terms
+    url = "http://export.arxiv.org/api/query?search_query=abs:\"" + query + "\"&sortBy=lastUpdatedDate&sortOrder=descending&max_results=" + str(n)
+    data = urllib.request.urlopen(url).read()
+    return data
 
 def retrievePaperInfo(terms): ## terms has to be a list
 	outputJson = []
