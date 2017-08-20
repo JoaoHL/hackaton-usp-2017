@@ -23,7 +23,7 @@ def retrievePaperInfo(terms): ## terms has to be a list
 	jsonEntries = []
 	print(x)
 	for entry in entries:
-		properties = ["id", "published", "summary"]
+		properties = ["title", "id", "published", "summary"]
 		x = [(y, entry.getElementsByTagName(y)[0].firstChild.nodeValue) for y in properties]
 		author = entry.getElementsByTagName("author")[0]
 		author = author.getElementsByTagName("name")[0].firstChild.nodeValue
