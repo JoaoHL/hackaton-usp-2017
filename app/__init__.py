@@ -2,6 +2,8 @@ from flask import Flask
 from flask_mail import Mail
 import app.User
 import app.Paper
+
+##Username, password, etc. Not commited
 import app.configs as configs
 
 app = Flask(__name__)

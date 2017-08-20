@@ -22,3 +22,10 @@ def checkMail():
             result += "Error processing email for " + ind.name + "\n"
             result += str(e)
     return result
+
+@app.route('/debugMail')
+def debugMail():
+    for ind in users:
+        papers = Paper.getUserPapers(ind)
+        return mailer.sendMail(ind, papers, debug=True)
+    
