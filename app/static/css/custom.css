@@ -1,0 +1,39 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+.vertical-space {
+    margin-top: 20px;
+}
+
+.repo::before {
+    content: "";
+    width: 32px;
+    background-image: url("/static/icons/GitHub-Mark-32px.png");
+    display: inline-block;
+    height: 32px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.repo {
+    color: white;
+}
+
+.repo:hover {
+    color: #e0e0e0;
+}
+
+.card-author {
+    display: block;
+    margin-top: 8px;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    font-style: italic;
+}

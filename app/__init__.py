@@ -7,6 +7,7 @@ import app.Paper
 import app.configs as configs
 
 app = Flask(__name__)
+app.config.from_object('config')
 
 ##Mail configuration
 app.config.update(configs.config)
