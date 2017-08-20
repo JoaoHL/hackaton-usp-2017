@@ -28,17 +28,3 @@ def checkMail():
                 result += str(e)
                 raise
     return result
-    
-
-
-        
-            
-    
-         
-       
-        
-
-        
-    
-
-
