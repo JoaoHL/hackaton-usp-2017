@@ -20,7 +20,7 @@ if (len(sys.argv) > 1):
 	for i in range(len(sys.argv)):
 		if (i > 0):
 			terms.append(sys.argv[i])
-	x = getPaperList(terms, 2)
+	x = getPaperList(terms, 3)
 	tree = xml.dom.minidom.parseString(x)
 	doc = tree.documentElement
 	entries = doc.getElementsByTagName("entry")
@@ -31,6 +31,11 @@ if (len(sys.argv) > 1):
 		author = entry.getElementsByTagName("author")[0]
 		author = author.getElementsByTagName("name")[0].firstChild.nodeValue
 		x.append(("author", author))
+		score = 0
+		abstract = entry.getElementsByTagName("summary")[0].firstChild.nodeValue 
+		for term in terms:
+			if (term in abstract): score += 1
+		x.append(("score", str(int(100 * score / float(len(terms))))))
 		jsonEntries.append(x)
 
 	outputJson = []
@@ -39,6 +44,11 @@ if (len(sys.argv) > 1):
 		jsonEntry["entry"] = {}
 		for field in entry:
 			jsonEntry["entry"][field[0]] = field[1]
+		categories = []
+		for term in terms:
+			if (term in jsonEntry["entry"]["summary"]):
+				categories.append(term)
+		jsonEntry["entry"]["categories"] = categories
 		outputJson.append(jsonEntry)
 
 	outputJson = encoder().encode(outputJson)
