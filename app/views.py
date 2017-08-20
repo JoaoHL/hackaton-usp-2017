@@ -37,6 +37,5 @@ def debugMail():
 @app.route('/show_papers', methods=['GET'])
 def show_papers():
     papers = Paper.getPapersForView()
-    print("papers: ", papers)
     papers = papers[:10]
     return render_template('papers.html', papers=papers)
