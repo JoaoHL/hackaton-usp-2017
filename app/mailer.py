@@ -7,7 +7,7 @@ from flask import render_template
 
 def sendMail(user, papers, debug=False):
     print("Sending mail")
-    msg = Message("New papers!")
+    msg = Message("New papers!", sender=("Sciternews", "sciternews@hotmail.com"))
     msg.recipients = [user.email]
     msg.html = render_template("template-mail.html", papers=papers, user=user)
 

@@ -15,7 +15,7 @@
 	 
 	 <tr>
 	  <td align="center" bgcolor="#6eb9b4" style="padding: 40px 0 30px 0;">
- 		<img src="{{ url_for('static', filename='images/header.jpg') }}" alt="Creating Email Magic" width="100%" height="33%" style="display: block;" />
+ 		<img src="http://i.imgur.com/OItH85E.jpg" alt="Creating Email Magic" width="100%" height="33%" style="display: block;" />
 	  </td>
 	 </tr>
 	 
@@ -23,22 +23,25 @@
 	  <td bgcolor="#ffffff" style="padding: 40px 0px 40px 0px;">
 		 <table border="0" cellpadding="0" cellspacing="0" width="100%">
 		  <tr>
-		   <td style="color: #153643; font-family: Arial, sans-serif; font-size: 24px;">
+		   <td>
 <!-- START_GREETING -->
-		    <b>News of the week for you, {{ user.name }}!<b>
+		    <b style="color: #153643; font-family: Arial, sans-serif; font-size: 24px;">News of the week for you, {{ user.name }}!</b>
+            <p>You are tracking: {% for inter in user.interests %} {{ inter }} {% endfor %} </p>
 <!-- END_GREETING -->
 		   </td>
 		  </tr>
+          <tr>
+          </tr>
 
 		  <tr>
-		   <td style="padding: 20px 0 30px 0;">
+		   <td style="padding: 20px 0 30px 0; width: 100%;">
 		    <table bgcolor="#a567bc" style="padding: 10px" align="center" border="0" cellpadding="0" cellspacing="0">
 
 <!-- START_ARTICLE_LIST -->
            {% for paper in papers %}
-		    	<tr  style="font-family: Arial, sans-serif;">
+		    	<tr style="font-family: Arial, sans-serif;">
     		    		<td style="padding: 10px 0 15px 0;">
-	    	    			<a href={{paper.link}}> {{ paper.title }}</a>
+ 	    	    			<a style="color: #153643"href={{paper.link}}> {{ paper.title }}</a>
 		        		</td>
 
                         <td style="padding: 10px 0 15px 0;">

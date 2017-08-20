@@ -1,6 +1,5 @@
 import arxivApiClient as aac
 
-
 #Utility functions
 def dateFormating(publdate):
     publdate = publdate.split("T")[0]
