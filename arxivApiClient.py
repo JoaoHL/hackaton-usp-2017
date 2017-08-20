@@ -15,15 +15,15 @@ def getPaperList(terms, n):
 	return data
 
 
-##TO-DO: retrieve link
-def retrievePaperInfo(terms):
+def retrievePaperInfo(terms): ## terms has to be a list
 	x = getPaperList(terms, 3)
 	tree = xml.dom.minidom.parseString(x)
 	doc = tree.documentElement
 	entries = doc.getElementsByTagName("entry")
 	jsonEntries = []
+	print(x)
 	for entry in entries:
-		properties = ["title", "published", "summary"]
+		properties = ["id", "published", "summary"]
 		x = [(y, entry.getElementsByTagName(y)[0].firstChild.nodeValue) for y in properties]
 		author = entry.getElementsByTagName("author")[0]
 		author = author.getElementsByTagName("name")[0].firstChild.nodeValue
@@ -48,8 +48,6 @@ def retrievePaperInfo(terms):
 		jsonEntry["entry"]["categories"] = categories
 		outputJson.append(jsonEntry)
 	return outputJson
-
-
 
 
 
