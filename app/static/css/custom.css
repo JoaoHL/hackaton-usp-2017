@@ -39,6 +39,20 @@ main {
     margin-right: 10px;
 }
 
+.tele::before {
+    content: "";
+    width: 32px;
+    background-image: url("/static/icons/messenger.png");
+    display: inline-block;
+    height: 32px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.tele{
+    color:white
+}
+
 .repo {
     color: white;
 }
